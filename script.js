@@ -31,7 +31,8 @@ async function generateCertificate() {
     try {
         // 加载模板图片
         const img = new Image();
-        img.crossOrigin = 'anonymous';  // 添加跨域支持
+        img.crossOrigin = 'anonymous';  // 确保添加这行
+        img.src = './template.jpg';  // 使用相对路径
         console.log('开始加载图片...');
         
         // 使用 Promise 包装图片加载
@@ -45,7 +46,7 @@ async function generateCertificate() {
                 reject(new Error('图片加载失败'));
             };
             // 添加时间戳防止缓存
-            img.src = 'template.jpg?' + new Date().getTime();
+            img.src = './template.jpg?' + new Date().getTime();
         });
         
         // 清空画布
